@@ -1,5 +1,10 @@
-prometheus exporter for pacemaker crm_mon
+prometheus exporter for pacemaker `crm_mon`.
 
+Start the daemon like this:
+
+```
+FLASK_APP=crm_mon_exporter FLASK_RUN_HOST=0.0.0.0 FLASK_RUN_PORT=9099 flask run
+```
 
 Metrics
 ----
