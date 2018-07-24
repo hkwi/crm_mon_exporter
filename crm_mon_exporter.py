@@ -1,6 +1,6 @@
 import flask
 import subprocess
-import lxml
+import lxml.etree
 
 def safe_label(name):
 	return name.replace("-","_").replace(".","_")
