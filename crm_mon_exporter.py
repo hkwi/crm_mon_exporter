@@ -7,6 +7,7 @@ def safe_label(name):
 
 def collect():
 	values = ""
+	current = {}
 	x = subprocess.check_output(["crm_mon","-X"])
 	t = lxml.etree.fromstring(x)
 	for n in t.xpath("./nodes/node"):
