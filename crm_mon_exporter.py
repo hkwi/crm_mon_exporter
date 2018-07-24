@@ -11,7 +11,7 @@ def collect():
 	t = lxml.etree.fromstring(x)
 	for n in t.xpath("./nodes/node"):
 		txt = "crm_mon_nodes{%s} %d\r\n" % (
-			",".join(['%s="%s"' % k,v for k,v in n.attrib.items()]),
+			",".join(['%s="%s"' % (k,v) for k,v in n.attrib.items()]),
 			int(n.attrib.get("resources_running","0")),
 		)
 		values += txt
