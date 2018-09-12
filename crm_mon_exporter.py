@@ -27,6 +27,18 @@ def collect():
 		",".join(['%s="%d"' % (safe_label(k), v) for k,v in current.items()]),
 	)
 	
+	for g in t.xpath(".//resources/group"):
+		for r in g.xpath(".//resource"):
+			for n in r.xpath(".//node"):
+				data={k:v for k,v in r.attrib.items()}
+				data.update({"node_"+k:v for k,v in n.attrib.items()})
+				data.update({"group_"+k:v for k,v in g.attrib.items()})
+				
+				txt = "crm_mon_resource{%s} 1\r\n" % (
+					",".join(['%s="%s"' % (k,v) for k,v in data.items()]),
+				)
+				values += txt
+	
 	return values
 
 app = flask.Flask(__name__)
